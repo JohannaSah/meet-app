@@ -109,3 +109,7 @@ To build a serveless, progressive web application (PWA) with React using test-dr
 - The app must make use of data visualization (recharts preferred).
 - The app must be covered by tests with a coverage rate >= 90%.
 - The app must be monitored using an online monitoring tool
+
+## Serverless functions
+
+In this apps serverless function will be used to retrieve the event data the client-side app needs to be authorized in the protected Google Calender API. As the API that is used s protected, a token is required for access. In this app OAuth 2.0 will be used in the authorisation process as it allows third-party app access to web resources without the need to share a password. The authrisation server returns the needed token after being presented with the neccessary credentials. After the token has been returned when a request is sent via the app to the API, the API sees and recognizes the token and provides the requested list of events. 
