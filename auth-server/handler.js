@@ -12,7 +12,7 @@ const credentials = {
   auth_uri: "https://accounts.google.com/o/oauth2/auth",
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  redirect_uris: ["https://johannasah.github.io/meet-app/"],
+  redirect_uris: ["https://johannasah.github.io/meet-app"],
   javascript_origins: ["https://johannasah.github.io/", "http://localhost:3000"], 
   // when I ctrl+click on the github link here, I get a 404 error message. Could that be the reason I cannot get authorized??
   // should it be formated differently?
