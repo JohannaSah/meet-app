@@ -27,6 +27,8 @@ const oAuth2Client = new google.auth.OAuth2(
   redirect_uris[0]
 );
 
+console.log(redirect_uris[0]);
+
 // getAuthURL Lambda function
 module.exports.getAuthURL = async () => {
   
@@ -42,7 +44,7 @@ module.exports.getAuthURL = async () => {
       "Access-Control-Allow-Credentials": true,
     },
     body: JSON.stringify({
-      authUrl: authUrl,
+      authUrl: authUrl
     }),
   };
 };
