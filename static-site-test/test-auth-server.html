@@ -56,10 +56,12 @@
             })
             .then(function (json) {
               const result = JSON.stringify(json);
+              console.log(result);
               const { authUrl } = JSON.parse(result);
+              console.log(authUrl);
               resultElement.innerText = result;
-              resultLink.href = authUrl;
-            });
+            resultLink.href = authUrl;
+          });
         };
 
         // step 2
@@ -72,19 +74,18 @@
             let code = codeValue.value;
 
             if (decodeURIComponent(code) === code) {
-                code = encodeURIComponent(codeValue.value);
+              code = encodeURIComponent(codeValue.value);
             }
-
-            const getTokenRequest = getToken + "/" + code;
-
+            const getTokenRequest = getToken +  "/" + code;
+            
             fetch(getTokenRequest)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (json) {
-                    accessTokenElement.innerText = JSON.stringify(json);
-                });
-        };
+              .then(function (response) {
+                return response.json();
+              })
+              .then(function (json) {
+                accessTokenElement.innerText = JSON.stringify(json);
+              });
+          };
 
         // step 3
         const getEvents = document.getElementById("getEvents");

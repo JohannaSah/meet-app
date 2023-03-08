@@ -13,7 +13,7 @@ const credentials = {
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
   redirect_uris: ["https://johannasah.github.io/meet-app"],
-  javascript_origins: ["https://johannasah.github.io/", "http://localhost:3000"], 
+  javascript_origins: ["https://johannasah.github.io/", "http://localhost:3000"],
   // when I ctrl+click on the github link here, I get a 404 error message. Could that be the reason I cannot get authorized??
   // should it be formated differently?
   // could the problem with the authorisation stem from the problems from 4.1?
@@ -31,7 +31,7 @@ console.log(redirect_uris[0]);
 
 // getAuthURL Lambda function
 module.exports.getAuthURL = async () => {
-  
+
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: SCOPES,
@@ -40,7 +40,7 @@ module.exports.getAuthURL = async () => {
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": '*',
       "Access-Control-Allow-Credentials": true,
     },
     body: JSON.stringify({
@@ -57,7 +57,7 @@ module.exports.getAccessToken = async (event) => {
     client_secret,
     redirect_uris[0]
   );
-  
+
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
   return new Promise((resolve, reject) => {
@@ -75,7 +75,7 @@ module.exports.getAccessToken = async (event) => {
         statusCode: 200,
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true,
+          "Access-Control-Allow-Credentials": true,
         },
         body: JSON.stringify(token),
       };
@@ -86,7 +86,7 @@ module.exports.getAccessToken = async (event) => {
         statusCode: 500,
         body: JSON.stringify(err),
       };
-    });  
+    });
 };
 
 // getCalendarEvents Lambda function
@@ -102,7 +102,7 @@ module.exports.getCalendarEvents = async (event) => {
   oAuth2Client.setCredentials({ access_token });
 
   return new Promise((resolve, reject) => {
-    
+
     calendar.events.list(
       {
         calendarId: calendar_id,
@@ -135,6 +135,6 @@ module.exports.getCalendarEvents = async (event) => {
       return {
         statusCode: 500,
         body: JSON.stringify(err),
-      }; 
+      };
     })
 };
