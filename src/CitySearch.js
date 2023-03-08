@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
+import { mockData } from './mock-data';
+import { extractLocations } from './api';
 
 class CitySearch extends Component {
     state = {
         query: '',
         suggestions: []
-    }
+    };
 
     handleInputChanged = (event) => {
         const value = event.target.value;
+        const locations = extractLocations(mockData);
         const suggestions = this.props.locations.filter((location) => {
           return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
         });
         this.setState({
           query: value,
           suggestions,
+        });
+    };
+
+    handleItemClicked = (suggestion) => {
+        this.setState({
+            query: suggestion
         });
     };
 
@@ -28,7 +37,10 @@ class CitySearch extends Component {
                 />
                 <ul className='suggestions'>
                     {this.state.suggestions.map((suggestion) => (
-                        <li key={suggestion}>
+                        <li 
+                            key={suggestion}
+                            onClick={() => this.handleItemClicked(suggestion)}
+                        >
                              {suggestion} 
                         </li>
                     ))}
