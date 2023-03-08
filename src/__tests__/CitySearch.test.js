@@ -34,7 +34,7 @@ describe('<CitySearch /> Component', () => {
         expect(CitySearchWrapper.state('query')).toBe('Berlin');
     });
 
-    test('render list of suggestion correctly', () => {
+    test('render list of suggestions correctly', () => {
         CitySearchWrapper.setState({ suggestions: locations });
         expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length + 1);
         for (let i = 0; i < suggestions.length; i += 1) {
