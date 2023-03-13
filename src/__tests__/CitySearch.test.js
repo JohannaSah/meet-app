@@ -4,13 +4,11 @@ import CitySearch from '../CitySearch';
 import { mockData } from '../mock-data';
 import { extractLocations } from '../api';
 
-describe('<CitySearch /> Component', () => {
-    let locations, CitySearchWrapper, query, suggestions;
+describe('<CitySearch /> component', () => {
+    let locations, CitySearchWrapper;
     beforeAll(() => {        
         locations = extractLocations(mockData);
         CitySearchWrapper = shallow(<CitySearch />);
-        query = CitySearchWrapper.state('query');
-        suggestions = CitySearchWrapper.state('suggestions');
     });
 
     test('render text input', () => {
@@ -22,6 +20,7 @@ describe('<CitySearch /> Component', () => {
     });
 
     test('renders text input correctly', () => {
+        const query = CitySearchWrapper.state("query");
         expect(CitySearchWrapper.find('.city').prop('value')).toBe(query);
     });
 
@@ -35,9 +34,11 @@ describe('<CitySearch /> Component', () => {
     });
 
     test('render list of suggestions correctly', () => {
+        const locations = extractLocations(mockData);
         CitySearchWrapper.setState({ suggestions: locations });
+        const suggestions = CitySearchWrapper.state('suggestions');
         expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length + 1);
-        for (let i = 0; i < suggestions.length; i += 1) {
+        for (let i = 0; i < suggestions.length; i ++) {
         expect(CitySearchWrapper.find('.suggestions li').at(i).text()).toBe(suggestions[i]);
         }
     });
@@ -47,17 +48,18 @@ describe('<CitySearch /> Component', () => {
         CitySearchWrapper.find('.city').simulate('change', {
             target: { value: 'Berlin' },
         });
+        const query = CitySearchWrapper.state("query");
         const filteredLocations = locations.filter((location) => {
             return location.toUpperCase().indexOf(query.toUpperCase()) > -1;
         });
         expect(CitySearchWrapper.state('suggestions')).toEqual(filteredLocations);
     });
 
-    test('selecting a suggestion should change query state', () => {
+    test("selecting a suggestion should change query state", () => {
         CitySearchWrapper.setState({
-            query: 'Berlin'
-        });
+          query: 'Berlin'  });
+        const suggestions = CitySearchWrapper.state('suggestions');
         CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
-        expect(CitySearchWrapper.state('query')).toBe(suggestions[0]);
-    });
+        expect(CitySearchWrapper.state("query")).toBe(suggestions[0]);
+      });
 });

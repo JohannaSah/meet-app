@@ -4,53 +4,53 @@ import { extractLocations } from './api';
 
 class CitySearch extends Component {
     state = {
-        query: '',
+        query: "",
         suggestions: []
-    };
-
-    handleInputChanged = (event) => {
+      };
+    
+      handleInputChanged = (event) => {
         const value = event.target.value;
         const locations = extractLocations(mockData);
-        const suggestions = this.props.locations.filter((location) => {
+        const suggestions = locations.filter((location) => {
           return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
         });
         this.setState({
           query: value,
           suggestions,
         });
-    };
-
-    handleItemClicked = (suggestion) => {
+      };
+    
+      handleItemClicked = (suggestion) => {
         this.setState({
-            query: suggestion
+          query: suggestion,
         });
-    };
-
-    render() {
+      };
+    
+      render() {
         return (
-            <div className='CitySearch'>
-                <input 
-                    type='text'
-                    className='city'
-                    value={this.state.query}
-                    onChange={this.handleInputChanged}
-                />
-                <ul className='suggestions'>
-                    {this.state.suggestions.map((suggestion) => (
-                        <li 
-                            key={suggestion}
-                            onClick={() => this.handleItemClicked(suggestion)}
-                        >
-                             {suggestion} 
-                        </li>
-                    ))}
-                    <li>
-                        <b> See all cities </b>
-                    </li>
-                </ul>
-            </div>
+          <div className="CitySearch">
+            <input
+              type="text"
+              className="city"
+              value={this.state.query}
+              onChange={this.handleInputChanged}
+            />
+            <ul className="suggestions">
+              {this.state.suggestions.map((suggestion) => (
+                <li
+                  key={suggestion}
+                  onClick={() => this.handleItemClicked(suggestion)}
+                >
+                  {suggestion}
+                </li>
+              ))}
+              <li>
+                <b> See all cities </b>
+              </li>
+            </ul>
+          </div>
         );
+      }
     }
-}
-
-export default CitySearch;
+    
+    export default CitySearch;
