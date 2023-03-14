@@ -51,6 +51,7 @@ class CitySearch extends Component {
               value={this.state.query}
               onChange={this.handleInputChanged}
               onFocus={ this.handleInputFocus}
+              placeholder="Search for a city"
             />
             
             <ul 
