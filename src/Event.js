@@ -13,6 +13,7 @@ class Event extends Component {
     render() {
         const { event } = this.props;
         const { collapsed } = this.state;
+        const dateString = new Date(event.start.dateTime).toGMTString();
 
         return (
             <div className={`event ${this.state.collapsed ? '' : 'expanded'}`}>
@@ -21,25 +22,22 @@ class Event extends Component {
                 </h2>
 
                 <p className="startTime">
-                    { new Date(event.start.dateTime).toString() }
+                    Time: { dateString }
                 </p>
 
                 <p className="eventLocation">
                     { `Location: ${event.location}` }
                 </p>
 
-                <button
-                    className="detailsButton"
-                    onClick={this.toggleDetails}
-                >
-                    { collapsed ? 'Show' : 'Hide'} Details
-                </button>
-
                 { !collapsed && (
                     <div className="eventDetails">
                         <h3 className="about">
                             About the event:
-                        </h3>
+                        </h3>     
+
+                        <p className="description">
+                            { event.description }
+                        </p>  
 
                         <a 
                             className="link"
@@ -48,13 +46,17 @@ class Event extends Component {
                             rel="noopener noreferrer"
                         >
                             See the details on Google Calendar
-                        </a>     
-
-                        <p className="description">
-                            { event.description }
-                        </p>                   
+                        </a>                 
                     </div>
                 )}
+
+                
+                <button
+                    className="detailsButton"
+                    onClick={this.toggleDetails}
+                >
+                    { collapsed ? 'Show' : 'Hide'} Details
+                </button>
 
             </div>
         );

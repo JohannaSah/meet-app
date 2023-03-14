@@ -2,6 +2,14 @@ import { mockData } from "./mock-data";
 import axios from "axios";
 import NProgress from "nprogress";
 
+const isLocalhost = Boolean(
+    window.location.hostname === 'localhost' ||
+      // [::1] is the IPv6 localhost address.
+      window.location.hostname === '[::1]' ||
+      // 127.0.0.0/8 are considered localhost for IPv4.
+      window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+  );
+
 export const extractLocations = (events) => {
     var extractLocations = events.map((event) => event.location);
     var locations = [...new Set(extractLocations)];
@@ -48,16 +56,22 @@ const removeQuery = () => {
 export const getEvents = async () => {
     NProgress.start();
 
-   if (window.location.href.startsWith('http://localhost')) {
+    if (isLocalhost) {
+        NProgress.done();
+        return mockData;
+      }
+    
+    if (!navigator.onLine) {
+    const data = localStorage.getItem("lastEvents");
     NProgress.done();
-    return mockData;
-   }
+    return data ? JSON.parse(data).events : [];
+    }
 
    const token = await getAccessToken();
 
    if (token) {
     removeQuery();
-    const url = 'https://7vhpofmv4m.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url' + '/' + token;
+    const url = 'https://7vhpofmv4m.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;
     const result = await axios.get(url);
     if (result.data) {
         var locations = extractLocations(result.data.events);
