@@ -9,7 +9,7 @@ const feature = loadFeature('./src/__features__/filterEventsByCity.feature');
 
 defineFeature(feature, test => {
     test('When user has not searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-        given('user has not searched for any city', () => {
+        given('the user has not searched for any city', () => {
     
         });
         
@@ -30,7 +30,7 @@ defineFeature(feature, test => {
             CitySearchWrapper = shallow(<CitySearchWrapper updateEvents={() => {}} locations={locations} />);
         });
 
-        when('the user starts typing in the city textbox', () => {
+        when('the user starts typing in the city input field', () => {
             CitySearchWrapper.find('.city').simulate('change', { target: { value: 'Berlin' } });
         });
 
@@ -42,7 +42,7 @@ defineFeature(feature, test => {
     
     test('User can select a city from the suggested list', ({ given, and, when, then }) => {
         let AppWrapper;
-        given('user was typing “Berlin” in the city textbox', async () => {
+        given('user was typing “Berlin” in the city input field', async () => {
             AppWrapper = await mount(<App />);
             AppWrapper.find('.city').simulate('change', { target: { value: 'Berlin' } });
 
