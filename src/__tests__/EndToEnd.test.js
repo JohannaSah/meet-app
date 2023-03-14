@@ -38,3 +38,47 @@ describe('show/hide event details', ()=> {
     });
 
 });
+
+describe('Filter events by city', ()=> {
+
+  let browser;
+  let page;
+  beforeAll(async () => {
+    jest.setTimeout(30000);
+    browser = await puppeteer.launch({
+      headless: false,
+      slowMo: 250, 
+     ignoreDefaultArgs: ['--disable-extensions'] 
+    });
+    page = await browser.newPage();
+    await page.goto('http://localhost:3000/');
+    await page.waitForSelector('.event');
+  });
+
+  afterAll(() => {
+    browser.close();
+  });
+
+  test('When user has not searched for a city, show upcoming events from all cities.', async () => {    
+    const eventDetails = await page.$('.event .eventDetails');
+    expect(eventDetails).toBeNull();
+  });
+
+  test('User should see a list of suggestions when they search for a city', async () => {  
+    const searchedCity = await page.$('.suggestions li');
+    expect(searchedCity).toBeDefined();
+  });
+
+  test('User can select a city from the suggested list', async () => {
+    await page.reload();
+    await page.type('.city', 'Berlin', { delay: 150 });
+    await page.click('.suggestions li');
+    await page.waitForSelector('.event');
+    const selectedCity = await page.$$eval('.event .location', (elements) =>
+      elements.map((element) => element.textContent)
+    );
+    expect(selectedCity).toEqual(expect.arrayContaining(['Berlin, Germany']));
+  });
+  
+
+});
