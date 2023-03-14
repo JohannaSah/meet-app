@@ -17,7 +17,7 @@ class NumberOfEvents extends Component {
 
         return (
             <div className='NumberOfEvents'>
-                <h3> 
+                <h3 className='searchTitle'> 
                     Number of Events:
                 </h3>
                 <input
