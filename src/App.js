@@ -11,24 +11,14 @@ class App extends Component {
     events: [],
     locations: [],
     selectedLocations: 'all',
-    numberOfEvents: 32
+    number: 32
   }
 
-  updateEvents = (location) => {
-    getEvents().then((events) => {
-      const locationEvents = (location === 'all') ?
-        events : 
-        events.filter((event) => event.location === location);
-      this.setState({
-        events: locationEvents
-      });
-    });
-  }
-
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
       getEvents().then((events) => {
         if (this.mounted) {
+          events = events.slice(0, this.state.number);
           this.setState({ events, locations: extractLocations(events) });
         }
     });
@@ -38,13 +28,51 @@ class App extends Component {
     this.mounted = false;
   }
 
+  updateEvents = (location, inputNumber) => {
+    const {number, selectedLocations} = this.state;
+    if (location) {
+      getEvents().then(events => {
+        const locationEvents = (location === 'all') ?
+        events :
+        events.filter(event => event.location === location);
+        const eventsToShow=locationEvents.slice(0, number);
+        this.setState({
+        events: eventsToShow,
+        selectedLocations: location
+        });
+      });  
+    } else {
+      getEvents().then((events) => {
+        const locationEvents = (selectedLocations === 'all') ?
+        events :
+        events.filter((event) => event.location === selectedLocations);
+        const eventsToShow=locationEvents.slice(0, inputNumber);
+        this.setState({
+          events: eventsToShow,
+          number: inputNumber
+        });
+      })
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} />
-        <EventList events={this.state.events} />
+        <div className="search-inputs">
+          <CitySearch 
+            locations={this.state.locations} 
+            updateEvents={this.updateEvents} 
+          />
+          <NumberOfEvents 
+            number={this.state.number}
+            updateEvents={this.updateEvents} 
+          />
+        </div>
+        <div className='event-grid'>
+          <EventList events={this.state.events} />
+        </div>
       </div>
+
     );
   }
 }

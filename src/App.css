@@ -1,7 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   padding: 2% 5%;
+  background-color: #3A98B9;
 }
 
 .App * {
@@ -14,7 +17,7 @@ ul {
 }
 
 p {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .display-none {
@@ -29,24 +32,83 @@ input[type="number"] {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   font-size: 14px;
   line-height: 20px;
   align-self: center;
   height: 38px;
 }
 
+.searchTitle {
+  color: #EEEEEE;
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.search-inputs {
+  display: flex;
+  flex-direction: row;
+}
+
 .city {
-  width: 250px;
+  margin-bottom: 15px;
+}
+
+.number-input {
+  margin-bottom: 15px;
 }
 
 .CitySearch {
   display: flex;
   flex-direction: column;
-  flex-basis: 300px;
-  max-width: 300px;
+  flex-basis: 200px;
+  max-width: 200px;
   margin: auto;
   position: relative;
+}
+
+.NumberOfEvents {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 200px;
+  max-width: 200px;
+  margin: auto;
+  position: relative;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+}
+
+.EventList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.EventList li {
+  margin: 20px;
+  width: calc(25% - 20px);
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1500px) {
+  .EventList li {
+    margin: 10px;
+    width: calc(100% - 10px);
+  }
 }
 
 .suggestions {
@@ -77,21 +139,23 @@ input[type="number"] {
 }
 
 .event {
+  background: #FFF1DC;
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
   border: 1px solid #ccc;
   border-radius: 4px;
+  border-color: black;
   position: relative;
 }
 
-.details-btn {
-  position: absolute;
+.detailsButton {
+  background-color: #E8D5C4;
+  margin-top: 15px;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
-  outline: none;
   cursor: pointer;
 }
 
@@ -112,12 +176,6 @@ input[type="number"] {
 
 .description {
   overflow-x: hidden;
-}
-
-.numberOfEvents {
-  width: 200px;
-  margin: 20px auto;
-  text-align: center;
 }
 
 .button-wrapper {
@@ -197,8 +255,6 @@ input[type="number"] {
   letter-spacing: 0.2px;
   font-family: "Roboto";
 }
-
-
 
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {

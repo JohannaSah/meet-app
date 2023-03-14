@@ -3,13 +3,12 @@ import React, { Component } from "react";
 class Event extends Component {
 
     state = { collapsed: true };
-    
+
     toggleDetails = () => {
         this.setState((prevState) => ({
             collapsed: !prevState.collapsed
         }));
     };
-
 
     render() {
         const { event } = this.props;
@@ -23,7 +22,7 @@ class Event extends Component {
                 </h2>
 
                 <p className="startTime">
-                     { 'Time: ' + dateString }
+                    Time: { dateString }
                 </p>
 
                 <p className="eventLocation">
@@ -34,12 +33,12 @@ class Event extends Component {
                     <div className="eventDetails">
                         <h3 className="about">
                             About the event:
-                        </h3>     
-
+                        </h3>
+   
                         <p className="description">
                             { event.description }
-                        </p>  
-
+                        </p>
+                        
                         <a 
                             className="link"
                             href={event.htmlLink}
@@ -47,11 +46,10 @@ class Event extends Component {
                             rel="noopener noreferrer"
                         >
                             See the details on Google Calendar
-                        </a>                 
+                        </a>                     
                     </div>
                 )}
 
-                
                 <button
                     className="detailsButton"
                     onClick={this.toggleDetails}

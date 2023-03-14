@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { extractLocations } from './api';
 
 class CitySearch extends Component {
     state = {
@@ -23,7 +22,6 @@ class CitySearch extends Component {
         } else {
           return this.setState({
             query: value,
-            suggestions: [],
             suggestions: suggestions,
           });
         }
@@ -32,30 +30,30 @@ class CitySearch extends Component {
       handleItemClicked = (suggestion) => {
         this.setState({
           query: suggestion,
+          suggestions: [],
           showSuggestions: false
         });
 
         this.props.updateEvents(suggestion);
       };
-    
-      handleInputFocus = () => {this.setState({showSuggestions: true})};
 
+      handleInputFocus = () => {this.setState({showSuggestions: true})};
+    
       render() {
         return (
           <div className="CitySearch">
-            <h3>
+            <h3 className='searchTitle'>
               Find a City:
             </h3>
-
             <input
               type="text"
               className="city"
               value={this.state.query}
               onChange={this.handleInputChanged}
-              onFocus={ this.handleInputFocus }
+              onFocus={ this.handleInputFocus}
               placeholder="Search for a city"
             />
-
+            
             <ul 
               className="suggestions"
               style={this.state.showSuggestions ? {}: { display: 'none' }}  
@@ -74,7 +72,6 @@ class CitySearch extends Component {
                 <b> See all cities </b>
               </li>
             </ul>
-            
           </div>
         );
       }
