@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { extractLocations } from './api';
 
 class CitySearch extends Component {
     state = {
