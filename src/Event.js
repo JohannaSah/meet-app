@@ -22,7 +22,7 @@ class Event extends Component {
                 </h2>
 
                 <p className="startTime">
-                    Time: { dateString }
+                     { 'Time: ' + dateString }
                 </p>
 
                 <p className="eventLocation">
