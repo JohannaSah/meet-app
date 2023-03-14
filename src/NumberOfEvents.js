@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 class NumberOfEvents extends Component {
     state = { number: 32 };
 
-    changeNumber = (value) => {
-        this.setState({ number: value });
-    };
-
-    componentDidMount() {
-        this.setState({ number: this.props.number || 32 });
+    handleInputChanged = (event, props) => {
+        let inputValue = event.target.value;
+        if(inputValue < 0) inputValue = 0;
+        this.props.updateEvents(null,inputValue);
+        this.setState({ number: inputValue });
+        console.log(this.props);
     }
 
 
@@ -25,7 +25,7 @@ class NumberOfEvents extends Component {
                     type='number'
                     value={ number }
                     onChange={ (event) => {
-                        this.changeNumber(event.target.value);
+                        this.handleInputChanged(event);
                     }}
                 />
                 
