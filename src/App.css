@@ -37,6 +37,8 @@ input[type="number"] {
   line-height: 20px;
   align-self: center;
   height: 38px;
+  width: 150px;
+  text-align: center;
 }
 
 .searchTitle {
@@ -50,16 +52,35 @@ input[type="number"] {
 
 .search-inputs {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .city {
+  width: 100%;
   margin-bottom: 15px;
 }
 
 .number-input {
+  width: 100%;
   margin-bottom: 15px;
 }
+
+@media (min-width: 768px) {
+  .city {
+    width: calc(50% - 10px);
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .number-input {
+    width: calc(50% - 10px);
+    margin-bottom: 0;
+    margin-left: 10px;
+  }
+}
+
+
 
 .CitySearch {
   display: flex;
@@ -150,7 +171,7 @@ input[type="number"] {
 }
 
 .detailsButton {
-  background-color: #E8D5C4;
+  background-color: #EEEEEE;
   margin-top: 15px;
   right: 5px;
   bottom: 5px;
