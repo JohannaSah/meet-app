@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+import { extractLocations, getEvents } from './api';
 import './App.css';
 import CitySearch from './CitySearch';
 import EventList from './EventList';
@@ -8,16 +10,69 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 32
+    selectedLocations: 'all',
+    number: 32
+  }
+
+  async componentDidMount() {
+    this.mounted = true;
+      getEvents().then((events) => {
+        if (this.mounted) {
+          events = events.slice(0, this.state.number);
+          this.setState({ events, locations: extractLocations(events) });
+        }
+    });
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  updateEvents = (location, inputNumber) => {
+    const {number, selectedLocations} = this.state;
+    if (location) {
+      getEvents().then(events => {
+        const locationEvents = (location === 'all') ?
+        events :
+        events.filter(event => event.location === location);
+        const eventsToShow=locationEvents.slice(0, number);
+        this.setState({
+        events: eventsToShow,
+        selectedLocations: location
+        });
+      });  
+    } else {
+      getEvents().then((events) => {
+        const locationEvents = (selectedLocations === 'all') ?
+        events :
+        events.filter((event) => event.location === selectedLocations);
+        const eventsToShow=locationEvents.slice(0, inputNumber);
+        this.setState({
+          events: eventsToShow,
+          number: inputNumber
+        });
+      })
+    }
   }
 
   render() {
     return (
       <div className="App">
-        <CitySearch />
-        <NumberOfEvents />
-        <EventList events={ this.state.events } />
+        <div className="search-inputs">
+          <CitySearch 
+            locations={this.state.locations} 
+            updateEvents={this.updateEvents} 
+          />
+          <NumberOfEvents 
+            number={this.state.number}
+            updateEvents={this.updateEvents} 
+          />
+        </div>
+        <div className='event-grid'>
+          <EventList events={this.state.events} />
+        </div>
       </div>
+
     );
   }
 }
