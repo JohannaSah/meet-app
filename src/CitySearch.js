@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
     state = {
@@ -18,11 +19,13 @@ class CitySearch extends Component {
             query: value,
             suggestions: [],
             showSuggestions: false,
+            infoText: 'We cannot find the city you are looking for. Please try another city',
           });
         } else {
           return this.setState({
             query: value,
-            suggestions: suggestions,
+            suggestions,
+            infoText: '',
           });
         }
       };
@@ -31,7 +34,8 @@ class CitySearch extends Component {
         this.setState({
           query: suggestion,
           suggestions: [],
-          showSuggestions: false
+          showSuggestions: false,
+          infoText: '',
         });
 
         this.props.updateEvents(suggestion);
@@ -42,6 +46,7 @@ class CitySearch extends Component {
       render() {
         return (
           <div className="CitySearch">
+              <InfoAlert text={this.state.infoText} />
             <h3 className='searchTitle'>
               Find a City:
             </h3>
