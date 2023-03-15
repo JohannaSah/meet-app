@@ -50,6 +50,7 @@ class ErrorAlert extends Alert {
   }
 }
 
+// to be used later
 class WarningAlert extends Alert {
   constructor(props) {
     super(props);
