@@ -3,9 +3,10 @@ import { shallow } from "enzyme";
 import NumberOfEvents from "../NumberOfEvents";
 
 describe('<NumberOfEvents /> component', () => {
+    let mockFn = jest.fn();
     let NumberOfEventsWrapper;
     beforeAll(() => {
-        NumberOfEventsWrapper = shallow( <NumberOfEvents />);
+        NumberOfEventsWrapper = shallow( <NumberOfEvents updateEvents={ mockFn } />);
     });
 
     test('renders <NumbersOfEvents />', () => {
