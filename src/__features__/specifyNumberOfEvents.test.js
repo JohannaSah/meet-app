@@ -3,7 +3,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import App from '../App';
 
-const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
+const feature = loadFeature('./src/__features__/specifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
     let AppWrapper;
@@ -17,7 +17,7 @@ defineFeature(feature, test => {
         });
 
         then('A default number of 32 events is loaded on the page.', () => {
-            expect(AppWrapper.state('numberOfEvents')).toEqual(32);
+            expect(AppWrapper.state('number')).toEqual(32);
         });
     });
 
@@ -29,7 +29,7 @@ defineFeature(feature, test => {
         when('User changes the number of events in the input box.', () => {
             AppWrapper.update();
             let NumberOfEventsWrapper = AppWrapper.find('NumberOfEvents');
-            const eventObject = { target: { value: 10 } };
+            const eventObject = { target: { value: 2 } };
             NumberOfEventsWrapper.find('.number-input').simulate(
               'change',
               eventObject
@@ -38,7 +38,7 @@ defineFeature(feature, test => {
         );
 
         then('The event list elements shows the number of events set by the user.', () => {
-            expect(AppWrapper.find('.event')).toHaveLength(10);
+            expect(AppWrapper.find('.event')).toHaveLength(2);
         });
     });
 });

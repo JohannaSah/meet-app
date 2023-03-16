@@ -7,7 +7,7 @@ const feature = loadFeature('./src/__features__/showAndHideEventDetails.feature'
 
 defineFeature(feature, test => {
     let AppWrapper;
-    test('An event element is collapsed by default', ({ given, when, then }) => {
+    test('An event is collapsed by default', ({ given, when, then }) => {
         given('that the list of events has been loaded', () => {
             AppWrapper = mount(<App />);
         });
@@ -38,19 +38,19 @@ defineFeature(feature, test => {
         });
     });
 
-    test('User can collapse an event to hide its details', ({ given, when, then }) => {
-        given('that a user has finished viewing a selected event', async () => {
+    test('User can collapse the event details', ({ given, when, then }) => {
+        given('that a user does not want to view the expanded details anymore', async () => {
            AppWrapper = await mount(<App />);
            AppWrapper.update();
            AppWrapper.find('.event .detailsButton').at(0).simulate('click');
         });
 
-        when('the user clicks on the details button again', () => {
+        when('the user clicks the Hide Details button', () => {
           AppWrapper.update();
           AppWrapper.find('.event .detailsButton').at(0).simulate('click');
         });
 
-        then('the event details should be hidden.', () => {
+        then('the event details should be collapsed', () => {
             expect(AppWrapper.find('.event .expanded')).toHaveLength(0);
         });
     })
