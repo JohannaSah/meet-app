@@ -35,7 +35,6 @@ class Event extends Component {
                             About the event:
                         </h3>
    
-
                         <p className="description">
                             { event.description }
                         </p>
