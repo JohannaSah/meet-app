@@ -46,13 +46,16 @@ class CitySearch extends Component {
       render() {
         return (
           <div className="CitySearch">
-              <InfoAlert text={this.state.infoText} />
-            <h3 className='searchTitle'>
-              Find a City:
-            </h3>
+            <InfoAlert text={this.state.infoText} />
+            <label>
+              <h3 className='searchTitle'>
+                Find a City:
+              </h3>
+            </label>
             <input
               type="text"
               className="city"
+              title='City Search input'
               value={this.state.query}
               onChange={this.handleInputChanged}
               onFocus={ this.handleInputFocus}
