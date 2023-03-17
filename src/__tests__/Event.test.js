@@ -24,7 +24,7 @@ describe('<Event /> component', () => {
     test('renders the start details', () => {
         const start = EventWrapper.find('p.startTime');
         expect(start).toHaveLength(1);
-        expect(start.text()).toBe('Time: ' + new Date(event.start.dateTime).toGMTString());
+        expect(start.text()).toBe('Time: ' + (new Date(event.start.dateTime).toGMTString()));
     });
 
     test('renders the location details', () => {
