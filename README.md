@@ -25,66 +25,66 @@ To build a serveless, progressive web application (PWA) with React using test-dr
 
 - User story:
   As a user, I should be able to filter events by city, so that I can see the full list of events that take place in that city.
-  - Scenario:
+  - Scenario:  
     Given the list of events has been loaded
     When the user filters the events by city
     Then the events shown will only take place in that city
 
 - User story:
   As a user, I should be able to see the default state of a collapsed event element, so that I can see the full list of events without too many details.
-  - Scenario:
-    Given the list of events has been loaded
-    When the user views it
-    Then the event element will be collapsed by default
+  - Scenario:  
+    Given the list of events has been loaded  
+    When the user views it  
+    Then the event element will be collapsed by default  
 
 - User story:
   As a user, I should be able to expand an event, so that I can see its details.
-  - Scenario:
-    Given the list of events has been loaded
-    When the user clicks on an event
-    Then the event will expanded to show its details
+  - Scenario:  
+    Given the list of events has been loaded  
+    When the user clicks on an event  
+    Then the event will expanded to show its details  
 
 - User story:
   As a user, I should be able to collapse an event, so that the details are hidden.
-  - Scenario:
-    Given the event element has been expanded
-    When the user clicks on the event element
-    Then the event element will be collapsed
+  - Scenario:  
+    Given the event element has been expanded  
+    When the user clicks on the event element  
+    Then the event element will be collapsed  
 
 - User story:
   As a user, I should be able to view the default number of events (32), so that the amount of events shown is not overwhelming.
-  - Scenario:
-    Given that the list of collapsed event has been loaded
-    When user view it
-    Then only the default 32 events will be shown
+  - Scenario:  
+    Given that the list of collapsed event has been loaded  
+    When user view it  
+    Then only the default 32 events will be shown  
 
 - User story:
-  As a user, I should be able to change the number of events shown, so that I can view as many events at once as I want to.
-  - Scenario:
-    Given that the list of collapsed event has been loaded
-    When the user changes the number of events that are shown
-    Then the number of events that will be shown is the number the user chose
+  As a user, I should be able to change the number of events shown, so that I can view as many events at once as I want to.  
+  - Scenario:   
+    Given that the list of collapsed event has been loaded  
+    When the user changes the number of events that are shown  
+    Then the number of events that will be shown is the number the user chose  
 
 - User story:
   As a user, I should be able to be able to view cached data when there is no internet, so that I can use the app offline.
-  - Scenario:
-    Given that there was no internet
-    When the user uses the app
-    Then the cached data will be shown in the app
+  - Scenario:  
+    Given that there was no internet  
+    When the user uses the app  
+    Then the cached data will be shown in the app  
 
 - User story:
   As a user, I should be able to see an error when I change the settings while being offline, so that I know that the app needs to be online to view other events.
-  - Scenario:
-    Given that there was no internet
-    When the users changes the settings in the app
-    Then an error message will be shown
+  - Scenario:  
+    Given that there was no internet  
+    When the users changes the settings in the app  
+    Then an error message will be shown  
 
 - User story:
   As a user, I should be able to view a chart with the number of upcoming events in each city, so that I get a good quick overview of the events everywhere.
-  - Scenario:
-    Given that the app has been opened to the specific view
-    When the user views it
-    Then a chart with the number of upcoming events in each city will be shown
+  - Scenario:  
+    Given that the app has been opened to the specific view  
+    When the user views it  
+    Then a chart with the number of upcoming events in each city will be shown  
 
 ## Technical requirements
 
