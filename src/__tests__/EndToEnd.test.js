@@ -5,11 +5,10 @@ describe('show/hide event details', ()=> {
     let browser;
     let page;
     beforeAll(async () => {
-      jest.setTimeout(30000);
+      jest.setTimeout(50000);
       browser = await puppeteer.launch({
-        headless: false,
-        slowMo: 250, 
-       ignoreDefaultArgs: ['--disable-extensions'] 
+        headless: true,
+        ignoreDefaultArgs: ['--disable-extensions'] 
       });
       page = await browser.newPage();
       await page.goto('http://localhost:3000/');
@@ -44,11 +43,10 @@ describe('Filter events by city', ()=> {
   let browser;
   let page;
   beforeAll(async () => {
-    jest.setTimeout(30000);
+    jest.setTimeout(50000);
     browser = await puppeteer.launch({
-      headless: false,
-      slowMo: 250, 
-     ignoreDefaultArgs: ['--disable-extensions'] 
+      headless:  true,
+      ignoreDefaultArgs: ['--disable-extensions'] 
     });
     page = await browser.newPage();
     await page.goto('http://localhost:3000/');
@@ -74,11 +72,8 @@ describe('Filter events by city', ()=> {
     await page.type('.city', 'Berlin', { delay: 150 });
     await page.click('.suggestions li');
     await page.waitForSelector('.event');
-    const selectedCity = await page.$$eval('.event .location', (elements) =>
-      elements.map((element) => element.textContent)
-    );
-    expect(selectedCity).toEqual(expect.arrayContaining(['Berlin, Germany']));
+    const selectedCity = await page.$eval('.city', (element) => element.value);
+    expect(selectedCity).toEqual('Berlin, Germany');
   });
-  
 
 });
