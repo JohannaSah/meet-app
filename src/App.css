@@ -4,7 +4,7 @@
   flex-direction: column;
   text-align: center;
   padding: 2% 5%;
-  background-color: #3A98B9;
+  background-color: white;
 }
 
 .App * {
@@ -42,22 +42,12 @@ input[type="number"] {
 }
 
 .app-title {
-  color: #EEEEEE;
-  text-shadow: 
-    -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+  color: black;
   text-decoration: underline;
 }
 
 .searchTitle, .listTitle {
-  color: #EEEEEE;
-  text-shadow: 
-    -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+  color: black;
 }
 
 .search-inputs {
