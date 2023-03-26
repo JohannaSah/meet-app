@@ -8,10 +8,10 @@ function WelcomeScreen(props) {
             <h4 className="subtext">
                 Log in to see upcoming events around the world for full-stack developers
             </h4>
-            <div className="button_cont" align="center">
-                <div className="meet-app-logo-wrapper">
-                    <img className="meet-app-logo" src="../img/Meet.svg" alt="meet app logo" />
+            <div className="meet-app-logo-wrapper">
+                    <img className="meet-app-logo" src="../img/Meet.png" alt="meet app logo" />
                 </div>
+            <div className="button_cont" align="center">
                 <div class="google-btn">
                     <div class="google-icon-wrapper">
                         <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google sign-in" />

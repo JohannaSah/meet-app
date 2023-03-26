@@ -3,26 +3,7 @@
     width: 100%;
     height: 100%;
     top: 0;
-    background: #FFF1DC;
-}
-
-.title {
-    color: #3A98B9;
-    text-shadow: 
-        -1px -1px 0 #000,  
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
-    text-decoration: underline;
-}
-
-.subtext {
-    color: #3A98B9;
-    text-shadow: 
-        -1px -1px 0 #000,  
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    background: #3A98B9;
 }
    
 .google-btn {
