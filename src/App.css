@@ -179,14 +179,21 @@ input[type="number"] {
   overflow: hidden;
 }
 
+.timeLocation {
+  position: absolute; 
+  top: 50%;
+  transform: translateY(-50%); 
+  left: 10px; 
+}
+
 .detailsButton {
   background-color: #EEEEEE;
-  margin-top: 15px;
-  right: 5px;
-  bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
   cursor: pointer;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
 }
 
 .name {

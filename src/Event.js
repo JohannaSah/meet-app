@@ -21,13 +21,17 @@ class Event extends Component {
                     { event.summary }
                 </h2>
 
-                <p className="startTime">
-                    Time: { dateString }
-                </p>
+                <div className="timeLoctaion">
+                    <p className="startTime">
+                        Time: { dateString }
+                    </p>
 
-                <p className="eventLocation">
-                    { `Location: ${event.location}` }
-                </p>
+                    <p className="eventLocation">
+                        { `Location: ${event.location}` }
+                    </p>
+                </div>
+
+                
 
                 { !collapsed && (
                     <div className="eventDetails">
