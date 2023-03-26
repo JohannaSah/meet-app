@@ -56,31 +56,37 @@ const removeQuery = () => {
 export const getEvents = async () => {
     NProgress.start();
 
-    if (isLocalhost) {
+    if (window.location.href.indexOf('localhost') > -1) {
         NProgress.done();
         return mockData;
-      }
+    };
     
-    if (!navigator.onLine) {
-    const data = localStorage.getItem("lastEvents");
-    NProgress.done();
-    return data ? JSON.parse(data).events : [];
-    }
-
-   const token = await getAccessToken();
-
-   if (token) {
-    removeQuery();
-    const url = 'https://7vhpofmv4m.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;
-    const result = await axios.get(url);
     if (result.data) {
         var locations = extractLocations(result.data.events);
         localStorage.setItem('lastEvents', JSON.stringify(result.data));
         localStorage.setItem('locations', JSON.stringify(locations));
+    };
+    
+    if (!navigator.onLine) {
+        const data = localStorage.getItem("lastEvents");
         NProgress.done();
-        return result.data.events;
-    }
-   };
+        return data ? JSON.parse(events).events:[];
+    };
+
+    const token = await getAccessToken();
+
+    if (token) {
+        removeQuery();
+        const url = 'https://7vhpofmv4m.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;
+        const result = await axios.get(url);
+        if (result.data) {
+            var locations = extractLocations(result.data.events);
+            localStorage.setItem('lastEvents', JSON.stringify(result.data));
+            localStorage.setItem('locations', JSON.stringify(locations));
+            NProgress.done();
+            return result.data.events;
+        }
+    };
 };
 
 export const getAccessToken = async () => {
