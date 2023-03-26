@@ -41,6 +41,15 @@ input[type="number"] {
   text-align: center;
 }
 
+.app-title {
+  color: #EEEEEE;
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
 .searchTitle {
   color: #EEEEEE;
   text-shadow: 

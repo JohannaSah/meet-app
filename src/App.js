@@ -58,9 +58,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className='Title'>
-          <h1> Meet App </h1>
-          <p> where you can find all the exciting coding workshops </p>
+        <div className="App title">
+          <h1 className="app-title"> Meet App </h1>
+          <p> where you can find all your exciting coding workshops </p>
         </div>
         <div className="search-inputs">
           <CitySearch 
