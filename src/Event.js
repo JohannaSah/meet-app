@@ -18,8 +18,7 @@ class Event extends Component {
         return (
             <div className={`event ${this.state.collapsed ? 'collapsed' : 'expanded'}`}>
 
-                <div className="eventContent">
-
+                <div className="eventContent">                      
                     <h2 className="eventTitle">
                         { event.summary }
                     </h2>
@@ -33,8 +32,6 @@ class Event extends Component {
                             { `Location: ${event.location}` }
                         </p>
                     </div>
-
-                    
 
                     { !collapsed && (
                         <div className="eventDetails">

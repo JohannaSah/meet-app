@@ -51,7 +51,7 @@ input[type="number"] {
   text-decoration: underline;
 }
 
-.searchTitle {
+.searchTitle, .listTitle {
   color: #EEEEEE;
   text-shadow: 
     -1px -1px 0 #000,  
@@ -182,11 +182,6 @@ input[type="number"] {
   height: 250px;
 }
 
-.eventContent {
-  max-height: 275px;
-  overflow: hidden;
-}
-
 .event.expanded .eventContent {
   max-height: none; 
 }
@@ -198,7 +193,7 @@ input[type="number"] {
 .detailsButton {
   background-color: #EEEEEE;
   padding: 5px 8px;
-  margin-top: 10px;
+  margin-top: auto;
   border-radius: 4px;
   cursor: pointer;
   position: absolute;

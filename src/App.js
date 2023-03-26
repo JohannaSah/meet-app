@@ -59,6 +59,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="app-title"> Meet App </h1>
+
+        <h2 className='listTitle'> Events </h2>
         
         <div className="search-inputs">
           <CitySearch 
