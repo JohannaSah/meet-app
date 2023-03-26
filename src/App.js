@@ -60,7 +60,7 @@ class App extends Component {
       <div className="App">
         <div className="App title">
           <h1 className="app-title"> Meet App </h1>
-          <p> where you can find all your exciting coding workshops </p>
+          <p> where you can find all our exciting coding workshops </p>
         </div>
         <div className="search-inputs">
           <CitySearch 
