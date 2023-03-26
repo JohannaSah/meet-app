@@ -9,6 +9,8 @@ import * as atatus from 'atatus-spa';
 
 atatus.config('d4bc238129cd4557a7b98980c4fafa1a').install();
 
+console.log('Hello');
+
 const root = document.getElementById("root");
 render(<App />, root);
 
