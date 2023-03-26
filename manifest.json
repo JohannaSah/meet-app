@@ -9,15 +9,15 @@
       "purpose": "any maskable"
     },
     {
-      "src": "meet-app-192.png",
+      "src": "meet-250.png",
       "type": "image/png",
-      "sizes": "192x192",
+      "sizes": "250x250",
       "purpose": "any maskable"
     },
     {
-      "src": "meet-app-512.png",
+      "src": "meet-563.png",
       "type": "image/png",
-      "sizes": "512x512",
+      "sizes": "563x563",
       "purpose": "any maskable"
     }
   ],
