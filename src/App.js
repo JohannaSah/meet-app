@@ -72,7 +72,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1 className="app-title"> Meet App </h1>
+        <div className="meet-app-logo-wrapper">
+          <img className="meet-app-logo" src="../img/Meet.jpg" alt="meet app logo" />
+        </div>
 
         <h2 className='listTitle'> Events </h2>
         

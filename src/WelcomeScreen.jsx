@@ -10,7 +10,7 @@ function WelcomeScreen(props) {
             </h4>
             <div className="meet-app-logo-wrapper">
                     <img className="meet-app-logo" src="../img/Meet.jpg" alt="meet app logo" />
-                </div>
+            </div>
             <div className="button_cont" align="center">
                 <div class="google-btn">
                     <div class="google-icon-wrapper">
