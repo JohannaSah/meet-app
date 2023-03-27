@@ -4,7 +4,7 @@
   flex-direction: column;
   text-align: center;
   padding: 2% 5%;
-  background-color: whitesmoke;
+  background-color: rgb(255, 240, 214);
 }
 
 .App * {
