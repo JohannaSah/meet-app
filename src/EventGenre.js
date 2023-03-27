@@ -8,11 +8,9 @@ const EventGenre = ({ events }) => {
     const getData = () => {
         const genres = ["React", "JavaScript", "Node", "jQuery", "Angular"];
         const data = genres.map((genre) => {
-            const value = events.filter(({summary}) => {
-                const summaryWords = summary.split(' ');
-                return summaryWords.includes(genre);
-            }).length;
-            
+            const value = events.filter((event) =>
+                event.summary.toUpperCase().includes(genre.toUpperCase())
+            ).length;
             return { name: genre, value };
         });
         return data.filter((entry) => entry.value > 0);
@@ -26,7 +24,7 @@ const EventGenre = ({ events }) => {
         <ResponsiveContainer height={400}>
             <PieChart width={400} height={400}>
                 <Pie
-                    data={this.data}
+                    data={data}
                     cx={200}
                     cy={200}
                     labelLine={false}
