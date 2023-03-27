@@ -99,11 +99,12 @@ class App extends Component {
           />
         </div>
         <div className='scatterChart'>
+          <h4> Number of events in every city </h4>
           <ResponsiveContainer height={400} >
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <CartesianGrid />
-              <XAxis type="category" dataKey="city" name="City" />
-              <YAxis
+              <YAxis type="category" dataKey="city" name="City" />
+              <XAxis
                 allowDecimals={false}
                 type="number"
                 dataKey="number"
