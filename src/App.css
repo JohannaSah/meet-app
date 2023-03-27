@@ -42,8 +42,12 @@ input[type="number"] {
 }
 
 .app-title {
-  color: black;
+  color: #276b80;
   text-decoration: underline;
+}
+
+.paragraph {
+  margin-bottom: 25px;
 }
 
 .searchTitle, .listTitle {

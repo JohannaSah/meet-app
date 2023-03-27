@@ -115,7 +115,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1 className="app-title"> Welcom to Meet App </h1>
+        <h1 className="app-title"> Welcome to Meet App </h1>
+
+        <p className='paragraph'> 
+            With this app you can browse to see the Events offered by Carreerfoundry. <br/>
+            First you will find statistics about the events shown below. <br/>
+            Both type of event (in %) and the number of shown events per city have been visualized. <br/> 
+        </p>
     
         <div
           className="position-absolute start-50 translate-middle-x"
@@ -125,13 +131,11 @@ class App extends Component {
         </div>
  
         <div className='data-vis-wrapper'>
-          <div className='chart piechart'>
-            <h3> % of shown Events </h3>
+          
             <EventGenre events={this.state.events} />
-          </div>
+         
 
           <div className='chart'> 
-            <h3>Number of shown Events per city</h3>
             <ResponsiveContainer height={300} >
               <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                 <CartesianGrid />
@@ -143,7 +147,7 @@ class App extends Component {
                   name="Number of Events"
                 />
                 <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-                <Scatter data={this.getData()} fill="#8884d8" />
+                <Scatter data={this.getData()} fill="#276b80" />
               </ScatterChart>
             </ResponsiveContainer>
           </div>
