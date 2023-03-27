@@ -4,7 +4,6 @@
   flex-direction: column;
   text-align: center;
   padding: 2% 5%;
-  background-color: rgb(255, 240, 214);
 }
 
 .App * {
@@ -223,26 +222,23 @@ input[type="number"] {
 }
 
 .data-vis-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.data-vis-wrapper .recharts-responsive-container {
-  min-width: 100%;
-  display: flex;
-}
-.recharts-surface {
-  overflow: visible;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
 }
 
-@media only screen and (min-width: 992px) {
+.data-vis-wrapper .recharts-responsive-container {
+  min-width: 100%;
+}
+
+@media (max-width: 767px) {
   .data-vis-wrapper {
-    flex-direction: row;
+    grid-template-columns: 1fr;
   }
-  .data-vis-wrapper .recharts-responsive-container {
-    flex-basis: 50%;
-    max-width: 50%;
-    min-width: auto;
-    margin: 0 auto;
-  }
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

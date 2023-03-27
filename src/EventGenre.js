@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
 const EventGenre = ({ events }) => {
     const [data, setData] = useState([]);
@@ -8,22 +8,26 @@ const EventGenre = ({ events }) => {
     const getData = () => {
         const genres = ["React", "JavaScript", "Node", "jQuery", "Angular"];
         const data = genres.map((genre) => {
-            const value = events.filter((event) =>
+             const value = events.filter((event) =>
                 event.summary.toUpperCase().includes(genre.toUpperCase())).length;
             return { name: genre, value };
         });
-        return data.filter((entry) => entry.value > 0);
+        return data.filter((genre) => genre.value > 0);
     };
 
     useEffect(() => {
         setData(() => getData());
     }, [events]);
 
+    if (!events) {
+        return <p>Loading...</p>;
+    }
+
     return (
         <ResponsiveContainer height={400}>
-            <PieChart width={400} height={400}>
+            <PieChart width={400} height={400} >
                 <Pie
-                    data={data}
+                    data={getData()}
                     cx={200}
                     cy={200}
                     labelLine={false}
@@ -32,12 +36,12 @@ const EventGenre = ({ events }) => {
                         `${name} ${(percent * 100).toFixed(0)}%`
                     }
                 >
-                    {data.map((entry, index) => (
+                    {data.map((genre, index) => (
                         <Cell key={`cell-${index}`} fill={colors[index]} />
                     ))}
                 </Pie>
             </PieChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer>    
     );
 };
 
