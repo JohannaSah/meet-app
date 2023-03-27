@@ -132,7 +132,7 @@ class App extends Component {
 
           <div className='chart'> 
             <h3>Number of shown Events per city</h3>
-            <ResponsiveContainer height={400} >
+            <ResponsiveContainer height={300} >
               <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                 <CartesianGrid />
                 <XAxis type="category" dataKey="city" name="City" />

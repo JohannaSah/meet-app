@@ -231,14 +231,22 @@ input[type="number"] {
   min-width: 100%;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 750px) {
   .data-vis-wrapper {
     grid-template-columns: 1fr;
   }
 }
 
-.chart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.chart-container {
+  width: 100%;
+  height: 0;
+  position: relative;
+}
+
+.chart-container > svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }

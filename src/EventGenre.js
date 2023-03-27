@@ -24,14 +24,14 @@ const EventGenre = ({ events }) => {
     }
 
     return (
-        <ResponsiveContainer height={400}>
-            <PieChart width={400} height={400} >
+        <div className="chart-container" style={{ width: '100%', height: 'auto', maxWidth: '600px' }}>
+            <PieChart width={500} height={300}>
                 <Pie
                     data={getData()}
-                    cx={200}
-                    cy={200}
+                    cx="50%"
+                    cy="50%"
                     labelLine={false}
-                    outerRadius={89}
+                    outerRadius={100}
                     label={({ name, percent }) =>
                         `${name} ${(percent * 100).toFixed(0)}%`
                     }
@@ -41,7 +41,7 @@ const EventGenre = ({ events }) => {
                     ))}
                 </Pie>
             </PieChart>
-        </ResponsiveContainer>    
+        </div>    
     );
 };
 
