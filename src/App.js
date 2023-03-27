@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import './App.css';
 import CitySearch from './CitySearch';
@@ -77,6 +78,7 @@ class App extends Component {
   };
 
   render() {
+    const { locations, number } = this.state;
 
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
 
@@ -95,6 +97,22 @@ class App extends Component {
             number={this.state.number}
             updateEvents={this.updateEvents} 
           />
+        </div>
+        <div className='scatterChart'>
+          <h4> Number of events in each city </h4>
+          <ResponsiveContainer width="100%" height="100%">
+            <ScatterChart
+              width={400}
+              height={400}
+              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+            >
+              <CartesianGrid />
+              <XAxis type="category" dataKey="city" name="City" />
+              <YAxis type="number" dataKey="number" name="Number of Events" />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
         </div>
         <div className='event-grid'>
           <EventList events={this.state.events} />
