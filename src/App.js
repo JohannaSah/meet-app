@@ -14,7 +14,7 @@ class App extends Component {
     selectedLocations: 'all',
     number: 32,
     showWelcomeScreen: undefined
-  }
+  };
 
   async componentDidMount() {
     this.mounted = true;
@@ -33,11 +33,11 @@ class App extends Component {
             }
         });
     }
-  }
+  };
 
   componentWillUnmount() {
     this.mounted = false;
-  }
+  };
 
   updateEvents = (location, inputNumber) => {
     const {number, selectedLocations} = this.state;
@@ -64,7 +64,17 @@ class App extends Component {
         });
       })
     }
-  }
+  };
+
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(', ').shift()
+      return { city, number};
+    })
+    return data;
+  };
 
   render() {
 
@@ -93,7 +103,7 @@ class App extends Component {
       </div>
 
     );
-  }
-}
+  };
+};
 
 export default App;
