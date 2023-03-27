@@ -4,7 +4,7 @@ import './WelcomeScreen.css';
 function WelcomeScreen(props) {
     return props.showWelcomeScreen ? (
         <div className="WelcomeScreen">
-            <h1 className="title">Welcome to the Meet app</h1>
+            <h1 className="title">Welcome to Meet app</h1>
             <h4 className="subtext">
                 Log in to see upcoming events around the world for full-stack developers
             </h4>
