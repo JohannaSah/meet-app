@@ -100,7 +100,6 @@ class App extends Component {
         </div>
         <div className='scatterChart'>
           <h4> Number of events in each city </h4>
-          <ResponsiveContainer width="100%" height="100%">
             <ScatterChart
               width={400}
               height={400}
@@ -112,7 +111,6 @@ class App extends Component {
               <Tooltip cursor={{ strokeDasharray: '3 3' }} />
               <Scatter data={this.getData()} fill="#8884d8" />
             </ScatterChart>
-          </ResponsiveContainer>
         </div>
         <div className='event-grid'>
           <EventList events={this.state.events} />
