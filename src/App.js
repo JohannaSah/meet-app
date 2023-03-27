@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import './App.css';
@@ -98,6 +98,7 @@ class App extends Component {
             updateEvents={this.updateEvents} 
           />
         </div>
+
         <div className='scatterChart'>
           <h4> Number of events in every city </h4>
           <ResponsiveContainer height={400} >
@@ -115,9 +116,11 @@ class App extends Component {
             </ScatterChart>
           </ResponsiveContainer>
         </div>
+
         <div className='event-grid'>
           <EventList events={this.state.events} />
         </div>
+        
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
 
