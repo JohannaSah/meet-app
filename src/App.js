@@ -78,7 +78,7 @@ class App extends Component {
   };
 
   render() {
-    const { locations, number } = this.state;
+    const { locations, number, events } = this.state;
 
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
 
@@ -99,18 +99,20 @@ class App extends Component {
           />
         </div>
         <div className='scatterChart'>
-          <h4> Number of events in each city </h4>
-            <ScatterChart
-              width={400}
-              height={400}
-              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-            >
+          <ResponsiveContainer height={400} >
+            <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <CartesianGrid />
               <XAxis type="category" dataKey="city" name="City" />
-              <YAxis type="number" dataKey="number" name="Number of Events" />
-              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <YAxis
+                allowDecimals={false}
+                type="number"
+                dataKey="number"
+                name="Number of Events"
+              />
+              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
               <Scatter data={this.getData()} fill="#8884d8" />
             </ScatterChart>
+          </ResponsiveContainer>
         </div>
         <div className='event-grid'>
           <EventList events={this.state.events} />
